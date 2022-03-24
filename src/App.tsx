@@ -5,6 +5,7 @@ import Layout from "./components/shared/Layout";
 const Home = lazy(() => import("./components/Home"));
 
 function App() {
+
   return (
     <Layout>
       <Suspense fallback={<div>Loading...</div>}>

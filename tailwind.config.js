@@ -1,11 +1,13 @@
 module.exports = {
+  darkMode: 'class',
+  mode: 'jit',
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      primary: "#01A6FF",
+      primary: "#0EA5E9",
 
       bg: {
-        light: "#F9FAFC",
+        light: "#FFFFFF",
         dark: "#09152F",
       },
     },

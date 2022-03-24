@@ -1,9 +1,17 @@
 import { ReactNode } from "react";
+import Header from "../Header";
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => <div className="p-4">{children}</div>;
+const Layout: React.FC<LayoutProps> = ({ children }) => (
+  <div className="w-screen h-screen bg-bg-light">
+    <div className="flex flex-col container mx-auto">
+      <Header />
+      {children}
+    </div>
+  </div>
+);
 
 export default Layout;
