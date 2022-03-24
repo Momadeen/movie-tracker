@@ -1,10 +1,18 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/shared/Layout";
 
+const Home = lazy(() => import("./components/Home"));
 
 function App() {
   return (
-    <div className="text-center">
-        <p className='text-3xl'>Hello</p>
-    </div>
+    <Layout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Suspense>
+    </Layout>
   );
 }
 
