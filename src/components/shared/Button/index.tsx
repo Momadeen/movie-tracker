@@ -2,10 +2,11 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  onClick?: () => void;
 }
 
-const Button = ({ children }: Props) => (
-  <button className="bg-blue-600 hover:bg-blue-700 duration-500 text-white py-2 px-4 rounded">
+const Button = ({ children, onClick }: Props) => (
+  <button onClick={onClick} className="bg-primary hover:bg-secondary leading-tight  font-kanit duration-500 text-white py-2 px-4 rounded">
     {children}
   </button>
 );

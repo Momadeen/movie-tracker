@@ -6,7 +6,7 @@ type LayoutProps = {
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
-  <div className="w-screen h-screen bg-bg-light">
+  <div className="w-screen h-screen bg-bg">
     <div className="flex flex-col container mx-auto">
       <Header />
       {children}
