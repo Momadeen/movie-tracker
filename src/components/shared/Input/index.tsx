@@ -1,14 +1,13 @@
-import { HTMLInputTypeAttribute } from "react";
+import { IInputTypes } from "../../../types/input";
 
-interface Props {
-  onChange?: () => void;
-  placeholder?: string;
-  inputType?: string;
-  type: HTMLInputTypeAttribute;
-  name: string;
-}
-
-const Input = ({ name, placeholder, onChange, inputType, type }: Props) =>
+const Input = ({
+  value,
+  name,
+  placeholder,
+  onChange,
+  inputType,
+  type,
+}: IInputTypes) =>
   inputType === "text" ? (
     <input
       name={name}
@@ -16,12 +15,14 @@ const Input = ({ name, placeholder, onChange, inputType, type }: Props) =>
       onChange={onChange}
       placeholder={placeholder || "title"}
       className=" placeholder-opacity-25"
+      value={value}
     />
   ) : (
     <textarea
       name={name}
       placeholder={placeholder || "description"}
       className="min-h-[150px]"
+      value={value}
     />
   );
 
