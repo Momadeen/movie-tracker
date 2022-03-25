@@ -43,8 +43,13 @@ const CreateForm = () => {
           />
         ))}
 
-        <div>
-          <Button type="submit">Create</Button>
+        <div className="flex gap-4">
+          <Button buttonType="primary" type="submit">
+            Create
+          </Button>
+          <Button  type="submit">
+            Random fill
+          </Button>
         </div>
       </form>
     </div>

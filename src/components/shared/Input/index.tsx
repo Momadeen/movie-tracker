@@ -21,7 +21,7 @@ const Input = ({ name, placeholder, onChange, inputType, type }: Props) =>
     <textarea
       name={name}
       placeholder={placeholder || "description"}
-      className="min-h-[100px]"
+      className="min-h-[150px]"
     />
   );
 
