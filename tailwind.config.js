@@ -1,14 +1,32 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'media',
+  mode: 'jit',
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   theme: {
-    colors: {
-      primary: "#01A6FF",
-
-      bg: {
-        light: "#F9FAFC",
-        dark: "#09152F",
-      },
+    fontFamily: {
+      kanit: ['Kanit', 'sans-serif']
     },
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        bg: '#0F171B',
+        primary: '#00EBD1',
+        secondary: '#008c7d',
+        white: '#fff',
+        gray: {
+          100: '#0C0C0C'
+        },
+        text: {
+          100: 'white',
+          200: '#6e6e6e'
+        },
+        border: {
+          100: '#5e5e5e'
+        }
+      }
+    }
   },
-  plugins: [],
+
+  plugins: []
 };
