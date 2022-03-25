@@ -7,3 +7,12 @@ export interface IRandomData {
   runtime: string;
   name: string;
 }
+
+export interface IMovieList {
+  imgUrl: string;
+  title: string;
+  description: string;
+  id: string;
+  releaseYear: number;
+  rating: number;
+}

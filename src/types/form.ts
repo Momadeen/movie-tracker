@@ -4,5 +4,5 @@ export type IFormTypes = {
   releaseYear: number;
   description: string;
   id: string;
-  imdbRating: number;
+  rating: number;
 };

@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
@@ -26,6 +27,8 @@ const inputs: IInputArrayTypes = [
 ];
 
 const CreateForm = () => {
+  let navigate = useNavigate();
+
   const { randomData, getRandomData } = useRandomFill();
   const { addMovieToList } = useLocalStorage();
 
@@ -34,8 +37,8 @@ const CreateForm = () => {
     title: '',
     releaseYear: 0,
     description: '',
-    id: '',
-    imdbRating: 0
+    id: uuid(),
+    rating: 4
   });
 
   const onClickRandomBtn = useCallback(async () => {
@@ -48,7 +51,7 @@ const CreateForm = () => {
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png',
       releaseYear: randomData?.releaseYear || 2021,
       description: randomData?.overview || 'N/A',
-      imdbRating: randomData?.imdbRating || 0
+      rating: (randomData?.imdbRating && Math.floor(randomData?.imdbRating / 2)) || 4
     }));
   }, [getRandomData, randomData]);
 
@@ -57,12 +60,23 @@ const CreateForm = () => {
   }, []);
 
   const onSubmit = useCallback(
-    e => {
+    async e => {
       e.preventDefault();
-      addMovieToList(movieDetails);
+      await addMovieToList(movieDetails);
+      navigate('/');
     },
-    [addMovieToList, movieDetails]
+    [addMovieToList, movieDetails, navigate]
   );
+
+  const isReadyToSubmit = useMemo(() => {
+    if (
+      movieDetails?.title === '' ||
+      movieDetails?.description === '' ||
+      movieDetails?.releaseYear === 0
+    )
+      return true;
+    return false;
+  }, [movieDetails]);
 
   return (
     <div className="flex flex-col gap-12 mt-8">
@@ -81,7 +95,7 @@ const CreateForm = () => {
         ))}
 
         <div className="flex gap-4">
-          <Button buttonType="primary" type="submit">
+          <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
             Create
           </Button>
           <Button onClick={onClickRandomBtn} type="button">

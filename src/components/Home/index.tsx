@@ -1,16 +1,25 @@
-import { Link } from "react-router-dom";
-import Button from "../shared/Button";
+import { Link } from 'react-router-dom';
+import useMovieList from '../../hooks/useMovieList';
+import { IMovieList } from '../../types/data';
+import Button from '../shared/Button';
+import MovieCard from '../shared/MovieCard';
 
 const Home = () => {
+  const moviesList = useMovieList();
+  console.log(moviesList);
   return (
-    <div className="flex flex-col gap-2 h-full w-full">
+    <div className="flex flex-col gap-8 h-full w-full">
       <div className="flex justify-end">
-        <Button>
+        <Button buttonType="primary">
           <Link to="/create">Create movie</Link>
         </Button>
       </div>
-      <div className="flex justify-center items-center h-full w-full">
-        <p className="text-secondary font-[400]">There's no movies</p>
+      <div className="flex h-full w-full gap-8 flex-wrap">
+        {moviesList?.map((movie: IMovieList) => (
+          <Link to={`/${movie?.id}`}>
+            <MovieCard key={movie?.title} movie={movie} />
+          </Link>
+        ))}
       </div>
     </div>
   );
