@@ -2,6 +2,9 @@ import BackButton from 'components/shared/BackButton';
 import { useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+
+import { FaRandom } from 'react-icons/fa';
+
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 import useRandomFill from '../../hooks/useRandomFill';
@@ -81,7 +84,7 @@ const CreateForm = () => {
   }, [movieDetails]);
 
   return (
-    <div className="flex flex-col gap-8 mt-8">
+    <div className="flex flex-col gap-8 mt-12 container mx-auto">
       <BackButton href="/" />
       <h2 className="text-gray-400 text-2xl font-kanit">Create New Movie</h2>
       <form className="flex flex-col gap-8 lg:w-1/2 w-3/4" onSubmit={onSubmit}>
@@ -102,7 +105,9 @@ const CreateForm = () => {
             Create
           </Button>
           <Button onClick={onClickRandomBtn} type="button">
-            Random fill
+            <p className='flex flex-row gap-2 items-center'>
+              Random fill <FaRandom />
+            </p>
           </Button>
         </div>
       </form>

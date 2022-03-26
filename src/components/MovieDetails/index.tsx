@@ -8,7 +8,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const { getMovieByID: movie } = useMovieList({ id });
   return (
-    <div className='flex flex-col gap-8'>
+    <div className='flex flex-col gap-8 mt-12 container mx-auto'>
       <div className="flex flex-col gap-8">
         <BackButton href="/" />
         <h2 className="font-kanit font-bold text-white text-4xl">{movie?.title}</h2>

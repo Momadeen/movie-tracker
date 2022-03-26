@@ -15,7 +15,7 @@ const MovieCard = ({ movie }: { movie: IMovieList }) => (
       <div>
         <StarsRating rating={movie?.rating} />
       </div>
-      <div className="flex flex-col group-hover:pb-2 duration-300">
+      <div className="flex flex-col group-hover:pb-2 duration-500">
         <h4 className="font-kanit font-bold">{movie?.title}</h4>
         <p className="truncate text-sm">{movie?.description}</p>
       </div>
