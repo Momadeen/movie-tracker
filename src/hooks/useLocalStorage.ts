@@ -1,11 +1,14 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 const useLocalStorage = () => {
-  const addMovieToList = useCallback(movie => {
-    const moviesList: any = JSON.parse(localStorage.getItem('movies') || '[]');
-    moviesList.push(movie);
-    localStorage.setItem('movies', JSON.stringify(moviesList));
-  }, []);
+  const moviesList: any = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
+  const addMovieToList = useCallback(
+    movie => {
+      moviesList.push(movie);
+      localStorage.setItem('movies', JSON.stringify(moviesList));
+    },
+    [moviesList]
+  );
 
   return { addMovieToList };
 };

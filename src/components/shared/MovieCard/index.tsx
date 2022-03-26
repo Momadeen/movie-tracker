@@ -13,7 +13,7 @@ const MovieCard = ({ movie }: { movie: IMovieList }) => (
     </div>
     <div className="flex flex-col justify-between absolute top-0 left-0 h-full w-full bg-transparent p-4">
       <div>
-        <StarsRating rating={movie?.rating} />
+        <StarsRating readyOnly rating={movie?.rating} />
       </div>
       <div className="flex flex-col group-hover:pb-2 duration-500">
         <h4 className="font-kanit font-bold">{movie?.title}</h4>
