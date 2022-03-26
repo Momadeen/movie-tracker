@@ -1,21 +1,28 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useMovieList from '../../hooks/useMovieList';
 import { IMovieList } from '../../types/data';
-import Button from '../shared/Button';
 import MovieCard from '../shared/MovieCard';
+import { movies } from 'constants/movies';
+
+import Hero from './Hero';
 
 const Home = () => {
-  const moviesList = useMovieList();
-  console.log(moviesList);
+  const { moviesList } = useMovieList({});
+
+  // add 3 movies as default if there's no movies
+
+  useEffect(() => {
+    if (moviesList?.length) return;
+    localStorage.setItem('movies', JSON.stringify(movies));
+    window.location.reload();
+  }, [moviesList?.length]);
   return (
     <div className="flex flex-col gap-8 h-full w-full">
-      <div className="flex justify-end">
-        <Button buttonType="primary">
-          <Link to="/create">Create movie</Link>
-        </Button>
-      </div>
-      <div className="flex h-full w-full gap-8 flex-wrap">
-        {moviesList?.map((movie: IMovieList) => (
+      <Hero movie={moviesList[0]} />
+
+      <div className="flex h-full w-full gap-8 flex-wrap container mx-auto">
+        {moviesList?.slice(1)?.map((movie: IMovieList) => (
           <Link to={`/${movie?.id}`}>
             <MovieCard key={movie?.title} movie={movie} />
           </Link>

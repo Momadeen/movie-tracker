@@ -1,12 +1,34 @@
+import { useState } from 'react';
 import StarIcon from '../icons/StarIcon';
 
-const StarsRating = ({ rating }: { rating: number }) => (
-  <ul className="flex justify-center">
-    <li className="flex flex-row gap-2">
-      {Array(rating).fill(<StarIcon isCheck />)}
-      {Array(5 - rating).fill(<StarIcon />)}
-    </li>
-  </ul>
-);
+type Props = {
+  rating: number;
+  setRating?: any;
+  readyOnly?: boolean;
+};
+
+const StarsRating = ({ setRating, readyOnly, rating }: Props) => {
+  const [hover, setHover] = useState(0);
+
+  return (
+    <div className="star-rating">
+      {[...Array(5)].map((_star, index) => {
+        index += 1;
+        return (
+          <button
+            type="button"
+            key={index}
+            className="star-button"
+            onClick={() => setRating(hover)}
+            onMouseEnter={() => !readyOnly && setHover(index)}
+            onMouseLeave={() => !readyOnly && setHover(rating)}
+          >
+            <StarIcon isCheck={index <= (hover || rating)} />
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 export default StarsRating;

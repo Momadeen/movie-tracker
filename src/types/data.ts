@@ -9,10 +9,10 @@ export interface IRandomData {
 }
 
 export interface IMovieList {
-  imgUrl: string;
-  title: string;
-  description: string;
-  id: string;
-  releaseYear: number;
+  imgUrl?: string;
+  title?: string;
+  description?: string;
+  id?: string;
+  releaseYear?: number;
   rating: number;
 }
