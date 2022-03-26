@@ -38,16 +38,13 @@ const AddReview = () => {
 
   useEffect(() => setFields(prev => ({ ...prev, rating })), [rating]);
 
-  const onSubmit = useCallback(
-    async e => {
-      e.preventDefault();
-    },
-    []
-  );
+  const onSubmit = useCallback(async e => {
+    e.preventDefault();
+  }, []);
 
   return (
     <div className="flex flex-col my-8">
-      <h2 className="text-gray-400 text-lg font-kanit">Add Review</h2>
+      <h2 className="text-gray-400 text-2xl font-kanit">Add Review</h2>
       <form className="flex flex-col gap-8 lg:w-1/2 w-3/4 mt-8" onSubmit={onSubmit}>
         {inputs?.map(input => (
           <Input
@@ -61,9 +58,11 @@ const AddReview = () => {
           />
         ))}
         <StarsRating rating={rating} setRating={setRating} />
-        <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
-          Create
-        </Button>
+        <div>
+          <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
+            Create
+          </Button>
+        </div>
       </form>
     </div>
   );
