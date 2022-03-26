@@ -18,7 +18,6 @@ const useMovieList = ({ id }: Props) => {
     [id, moviesList]
   );
 
-  console.log(moviesList);
 
   return { getMovieByID, moviesList };
 };

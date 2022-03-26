@@ -2,11 +2,11 @@ import { IMovieList } from '../../../types/data';
 import StarsRating from '../StarsRating';
 
 const MovieCard = ({ movie }: { movie: IMovieList }) => (
-  <div className="bg-gray-100 rounded-xl overflow-hidden h-64 w-60  text-white relative">
+  <div className="bg-gray-100 rounded-xl overflow-hidden h-64 w-60  text-white relative shadow-2xl group">
     <div className=" absolute top-0 left-0 h-full w-full z-0">
       <img
         src={movie?.imgUrl}
-        className="absolute z-[-1] object-cover w-full h-1/2"
+        className="absolute group-hover:scale-125 duration-300 z-[-1] object-cover w-full h-1/2"
         alt="movie img"
       />
       <div className="bg-gradient-to-t h-full from-black via-black to-transparent" />
@@ -15,7 +15,7 @@ const MovieCard = ({ movie }: { movie: IMovieList }) => (
       <div>
         <StarsRating rating={movie?.rating} />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col group-hover:pb-2 duration-300">
         <h4 className="font-kanit font-bold">{movie?.title}</h4>
         <p className="truncate text-sm">{movie?.description}</p>
       </div>

@@ -1,3 +1,4 @@
+import BackButton from 'components/shared/BackButton';
 import { useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
@@ -80,8 +81,9 @@ const CreateForm = () => {
   }, [movieDetails]);
 
   return (
-    <div className="flex flex-col gap-12 mt-8">
-      <h2 className="text-text-200 text-2xl font-kanit">Create New Movie</h2>
+    <div className="flex flex-col gap-8 mt-8">
+      <BackButton href="/" />
+      <h2 className="text-gray-400 text-2xl font-kanit">Create New Movie</h2>
       <form className="flex flex-col gap-8 lg:w-1/2 w-3/4" onSubmit={onSubmit}>
         {inputs?.map(input => (
           <Input

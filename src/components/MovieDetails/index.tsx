@@ -1,3 +1,4 @@
+import AddReview from 'components/shared/AddReview';
 import BackButton from 'components/shared/BackButton';
 import StarsRating from 'components/shared/StarsRating';
 import useMovieList from 'hooks/useMovieList';
@@ -7,23 +8,26 @@ const MovieDetails = () => {
   const { id } = useParams();
   const { getMovieByID: movie } = useMovieList({ id });
   return (
-    <div className="flex flex-col gap-8">
-      <BackButton href='/' />
-      <h2 className="font-kanit font-bold text-white text-4xl">{movie?.title}</h2>
+    <div className='flex flex-col gap-8'>
+      <div className="flex flex-col gap-8">
+        <BackButton href="/" />
+        <h2 className="font-kanit font-bold text-white text-4xl">{movie?.title}</h2>
 
-      <div className="">
-        <img src={movie?.imgUrl} alt="movie img" />
-      </div>
-      <p className="w-1/2 text-gray-200">{movie?.description}</p>
+        <div className="">
+          <img src={movie?.imgUrl} alt="movie img" />
+        </div>
+        <p className="w-1/2 text-gray-200">{movie?.description}</p>
 
-      <div className="flex gap-4 items-center">
-        <h4 className="font-kanit font-light text-white text-lg">Rating:</h4>
-        <StarsRating readyOnly rating={movie?.rating} />
+        <div className="flex gap-4 items-center">
+          <h4 className="font-kanit font-light text-white text-lg">Rating:</h4>
+          <StarsRating readyOnly rating={movie?.rating} />
+        </div>
+        <div className="flex gap-4">
+          <h4 className="font-kanit font-light text-white text-lg">Release Year:</h4>
+          <h4 className="font-kanit font-bold text-white text-lg">{movie?.releaseYear}</h4>
+        </div>
       </div>
-      <div className="flex gap-4">
-        <h4 className="font-kanit font-light text-white text-lg">Release Year:</h4>
-        <h4 className="font-kanit font-bold text-white text-lg">{movie?.releaseYear}</h4>
-      </div>
+      <AddReview />
     </div>
   );
 };

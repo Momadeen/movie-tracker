@@ -3,11 +3,11 @@ import StarIcon from '../icons/StarIcon';
 
 type Props = {
   rating: number;
-  onClick?: () => void;
+  setRating?: any;
   readyOnly?: boolean;
 };
 
-const StarsRating = ({ readyOnly, rating, onClick }: Props) => {
+const StarsRating = ({ setRating, readyOnly, rating }: Props) => {
   const [hover, setHover] = useState(0);
 
   return (
@@ -19,7 +19,7 @@ const StarsRating = ({ readyOnly, rating, onClick }: Props) => {
             type="button"
             key={index}
             className="star-button"
-            onClick={onClick}
+            onClick={() => setRating(hover)}
             onMouseEnter={() => !readyOnly && setHover(index)}
             onMouseLeave={() => !readyOnly && setHover(rating)}
           >
