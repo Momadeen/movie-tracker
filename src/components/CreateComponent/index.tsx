@@ -38,7 +38,8 @@ const CreateForm = () => {
     releaseYear: 0,
     description: '',
     id: uuid(),
-    rating: 4
+    rating: 0,
+    createdAt: new Date().getTime()
   });
 
   const onClickRandomBtn = useCallback(async () => {
@@ -51,7 +52,7 @@ const CreateForm = () => {
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png',
       releaseYear: randomData?.releaseYear || 2021,
       description: randomData?.overview || 'N/A',
-      rating: (randomData?.imdbRating && Math.floor(randomData?.imdbRating / 2)) || 4
+      rating: (randomData?.imdbRating && Math.floor(randomData?.imdbRating / 2)) || 0
     }));
   }, [getRandomData, randomData]);
 

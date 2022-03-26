@@ -12,12 +12,12 @@ const MovieCard = ({ movie }: { movie: IMovieList }) => (
       <div className="bg-gradient-to-t h-full from-black via-black to-transparent" />
     </div>
     <div className="flex flex-col justify-between absolute top-0 left-0 h-full w-full bg-transparent p-4">
-      <div className="z-1 flex flex-row justify-between">
+      <div>
         <StarsRating rating={movie?.rating} />
       </div>
       <div className="flex flex-col">
-        <h4 className='font-kanit font-bold'>{movie?.title}</h4>
-        <p className='truncate text-sm'>{movie?.description}</p>
+        <h4 className="font-kanit font-bold">{movie?.title}</h4>
+        <p className="truncate text-sm">{movie?.description}</p>
       </div>
     </div>
   </div>

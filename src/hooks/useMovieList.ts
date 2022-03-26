@@ -5,13 +5,20 @@ type Props = {
 };
 
 const useMovieList = ({ id }: Props) => {
-  const moviesList = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
+  const moviesList = useMemo(
+    () =>
+      JSON.parse(localStorage.getItem('movies') || '[]').sort(
+        (x: { createdAt: number; }, y: { createdAt: number; }) => y?.createdAt - x?.createdAt
+      ),
+    []
+  );
 
   const getMovieByID = useMemo(
     () => moviesList?.find((movie: Props) => movie?.id === id),
     [id, moviesList]
   );
 
+  console.log(moviesList);
 
   return { getMovieByID, moviesList };
 };

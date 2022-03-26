@@ -1,3 +1,4 @@
+import BackButton from 'components/shared/BackButton';
 import StarsRating from 'components/shared/StarsRating';
 import useMovieList from 'hooks/useMovieList';
 import { useParams } from 'react-router-dom';
@@ -7,6 +8,7 @@ const MovieDetails = () => {
   const { getMovieByID: movie } = useMovieList({ id });
   return (
     <div className="flex flex-col gap-8">
+      <BackButton href='/' />
       <h2 className="font-kanit font-bold text-white text-4xl">{movie?.title}</h2>
 
       <div className="">
@@ -14,9 +16,9 @@ const MovieDetails = () => {
       </div>
       <p className="w-1/2 text-gray-200">{movie?.description}</p>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <h4 className="font-kanit font-light text-white text-lg">Rating:</h4>
-        <StarsRating rating={movie?.rating} />
+        <StarsRating readyOnly rating={movie?.rating} />
       </div>
       <div className="flex gap-4">
         <h4 className="font-kanit font-light text-white text-lg">Release Year:</h4>
