@@ -1,12 +1,19 @@
 import { useMemo } from 'react';
 
-const useMovieList = () => {
-  const moviesList = useMemo(
-    () => JSON.parse(localStorage.getItem('movies') || '[]'),
-    []
+type Props = {
+  id?: string;
+};
+
+const useMovieList = ({ id }: Props) => {
+  const moviesList = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
+
+  const getMovieByID = useMemo(
+    () => moviesList?.find((movie: Props) => movie?.id === id),
+    [id, moviesList]
   );
 
-  return moviesList;
+
+  return { getMovieByID, moviesList };
 };
 
 export default useMovieList;

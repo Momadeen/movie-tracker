@@ -5,8 +5,7 @@ import Button from '../shared/Button';
 import MovieCard from '../shared/MovieCard';
 
 const Home = () => {
-  const moviesList = useMovieList();
-  console.log(moviesList);
+  const { moviesList } = useMovieList({});
   return (
     <div className="flex flex-col gap-8 h-full w-full">
       <div className="flex justify-end">
