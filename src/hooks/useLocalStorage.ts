@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const useLocalStorage = () => {
   const navigate = useNavigate();
 
-  const moviesList: any = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
+  const moviesList = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
 
   const addMovieToList = useCallback(
     movie => {
