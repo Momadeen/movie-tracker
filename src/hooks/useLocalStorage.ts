@@ -9,14 +9,15 @@ const useLocalStorage = () => {
     movie => {
       moviesList.push(movie);
       localStorage.setItem('movies', JSON.stringify(moviesList));
+      navigate('/');
     },
-    [moviesList]
+    [moviesList, navigate]
   );
 
-  const deleteMovieInList = useCallback(
-    ({ id }: { id?: string }) => {
+  const deleteMovie = useCallback(
+    async ({ id }: { id?: string }) => {
       const getNewList = moviesList?.filter((movie: { id: string }) => movie?.id !== id);
-      localStorage.setItem('movies', JSON.stringify(getNewList));
+      await localStorage.setItem('movies', JSON.stringify(getNewList));
       navigate('/');
     },
     [moviesList, navigate]
@@ -31,7 +32,7 @@ const useLocalStorage = () => {
     [moviesList]
   );
 
-  return { addMovieToList, deleteMovieInList, updateMovie };
+  return { addMovieToList, deleteMovie, updateMovie };
 };
 
 export default useLocalStorage;

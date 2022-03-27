@@ -3,7 +3,7 @@ import StarsRating from '../StarsRating';
 
 const MovieCard = ({ movie, className }: { movie: IMovieList; className?: string }) => (
   <div
-    className={`${className} bg-gray-100 rounded-xl overflow-hidden h-64 w-60  text-white relative shadow-2xl group`}
+    className={`${className} bg-gray-100 rounded-xl overflow-hidden h-40 w-40 md:w-72 md:h-80 text-white relative shadow-2xl group`}
   >
     <div className=" absolute top-0 left-0 h-full w-full z-0">
       <img
