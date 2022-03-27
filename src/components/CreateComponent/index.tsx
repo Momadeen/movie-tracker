@@ -113,7 +113,7 @@ const CreateForm = () => {
             </Button>
           </div>
         </form>
-        {movieDetails?.title !== '' && <MovieCard className='h-96 w-96' movie={movieDetails} />}
+        {movieDetails?.title !== '' && <MovieCard className="h-96 w-96" movie={movieDetails} />}
       </div>
     </div>
   );

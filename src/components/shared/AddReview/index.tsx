@@ -8,6 +8,7 @@ import StarsRating from '../StarsRating';
 import Button from '../Button';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 const inputs: IInputArrayTypes = [
   { name: 'title', type: 'text', inputType: 'text', placeholder: 'Title' },
@@ -19,12 +20,14 @@ const inputs: IInputArrayTypes = [
   }
 ];
 
-const AddReview = () => {
+const AddReview = ({ id, movie }: { id?: string; movie: any }) => {
+  const { updateMovie } = useLocalStorage();
   const [rating, setRating] = useState(0);
   const [reviewDetails, setFields] = useState<IFormTypes>({
     title: '',
     id: uuid(),
     rating: rating,
+    description: '',
     createdAt: new Date().getTime()
   });
   const handleChange = useCallback(e => {
@@ -32,15 +35,23 @@ const AddReview = () => {
   }, []);
 
   const isReadyToSubmit = useMemo(() => {
-    if (reviewDetails?.title === '' || reviewDetails?.description === '') return true;
+    if (reviewDetails?.title === '' || rating === 0) return true;
     return false;
-  }, [reviewDetails]);
+  }, [rating, reviewDetails?.title]);
 
   useEffect(() => setFields(prev => ({ ...prev, rating })), [rating]);
 
-  const onSubmit = useCallback(async e => {
-    e.preventDefault();
-  }, []);
+  const onSubmit = useCallback(
+    async e => {
+      e.preventDefault();
+      const review = { ...movie, review: [{ ...reviewDetails }] };
+      await updateMovie({ id, movie: review });
+      setFields({ title: '', description: '' });
+      setRating(0);
+      window?.location?.reload();
+    },
+    [id, movie, reviewDetails, updateMovie]
+  );
 
   return (
     <div className="flex flex-col my-8">

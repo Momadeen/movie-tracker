@@ -3,7 +3,7 @@ export type IFormTypes = {
   title: string;
   releaseYear?: number;
   description?: string;
-  id: string;
-  rating: number;
-  createdAt: number;
+  id?: string;
+  rating?: number;
+  createdAt?: number;
 };

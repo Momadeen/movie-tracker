@@ -15,7 +15,7 @@ const Button = ({ disabled, type, buttonType, children, onClick }: Props) => (
     onClick={onClick}
     className={`${
       buttonType === "primary"
-        ? "bg-gradient-to-r from-green-400 to-blue-500 text-black"
+        ? "bg-gradient-to-r from-green-400 to-blue-500 text-black shadow-[0_15px_60px_-10px_#0ff39c7d]"
         : "border border-primary bg-transparent text-primary hover:bg-primary hover:text-black"
     }  leading-tight font-kanit duration-500 min-w-[170px] hover:px-10 py-3 px-6 rounded-xl ${disabled && 'cursor-not-allowed'}`}
   >

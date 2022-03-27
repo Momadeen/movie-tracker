@@ -14,5 +14,5 @@ export interface IMovieList {
   description?: string;
   id?: string;
   releaseYear?: number;
-  rating: number;
+  rating?: number;
 }
