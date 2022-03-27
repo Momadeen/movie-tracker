@@ -1,4 +1,4 @@
-import { IMovieList } from '../../../types/data';
+import { IMovieList } from '../../../types/movie';
 import StarsRating from '../StarsRating';
 
 const MovieCard = ({ movie, className }: { movie: IMovieList; className?: string }) => (

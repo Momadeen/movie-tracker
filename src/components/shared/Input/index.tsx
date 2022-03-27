@@ -17,7 +17,6 @@ const Input = ({ value, name, placeholder, onChange, inputType, type }: IInputTy
       className="min-h-[150px]"
       value={value}
       onChange={onChange}
-      
     />
   );
 

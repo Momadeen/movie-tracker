@@ -2,7 +2,8 @@ import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const useLocalStorage = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
   const moviesList: any = useMemo(() => JSON.parse(localStorage.getItem('movies') || '[]'), []);
 
   const addMovieToList = useCallback(
@@ -28,6 +29,7 @@ const useLocalStorage = () => {
       const getNewList = moviesList?.filter((movie: { id: string }) => movie?.id !== id);
       getNewList.push(movie);
       localStorage.setItem('movies', JSON.stringify(getNewList));
+      window.location.reload();
     },
     [moviesList]
   );

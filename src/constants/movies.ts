@@ -9,7 +9,8 @@ export const movies = [
     description:
       "With Spider-Man' s identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
     createdAt: 10,
-    id: uuid()
+    id: uuid(),
+    reviews: []
   },
   {
     title: 'Scream',
@@ -19,7 +20,8 @@ export const movies = [
     description:
       "With Spider-Man' s identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
     createdAt: 10,
-    id: uuid()
+    id: uuid(),
+    reviews: []
   },
   {
     title: 'Spider-Man: No Way Home',
@@ -30,6 +32,7 @@ export const movies = [
     description:
       "With Spider-Man' s identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
     createdAt: 10,
-    id: uuid()
+    id: uuid(),
+    reviews: []
   }
 ];

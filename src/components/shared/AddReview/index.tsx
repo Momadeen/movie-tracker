@@ -3,14 +3,15 @@ import { useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import { IInputArrayTypes } from 'types/input';
 import Input from '../Input';
-import { IFormTypes } from 'types/form';
 import StarsRating from '../StarsRating';
 import Button from '../Button';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
 import useLocalStorage from 'hooks/useLocalStorage';
+import { IMovieList } from 'types/movie';
+import { IReviewForm } from 'types/form';
 
-const inputs: IInputArrayTypes = [
+const inputs: IInputArrayTypes<IReviewForm> = [
   { name: 'title', type: 'text', inputType: 'text', placeholder: 'Title' },
   {
     name: 'description',
@@ -20,16 +21,21 @@ const inputs: IInputArrayTypes = [
   }
 ];
 
-const AddReview = ({ id, movie }: { id?: string; movie: any }) => {
-  const { updateMovie } = useLocalStorage();
-  const [rating, setRating] = useState(0);
-  const [reviewDetails, setFields] = useState<IFormTypes>({
+function getDefaultState() {
+  return {
     title: '',
     id: uuid(),
-    rating: rating,
+    rating: 0,
     description: '',
     createdAt: new Date().getTime()
-  });
+  };
+}
+
+const AddReview = ({ id, movie }: { id?: string; movie: IMovieList }) => {
+  const { updateMovie } = useLocalStorage();
+  const [rating, setRating] = useState(0);
+  const [reviewDetails, setFields] = useState<IReviewForm>(getDefaultState());
+
   const handleChange = useCallback(e => {
     setFields(prev => ({ ...prev, [e?.target?.name]: e?.target?.value }));
   }, []);
@@ -44,11 +50,10 @@ const AddReview = ({ id, movie }: { id?: string; movie: any }) => {
   const onSubmit = useCallback(
     async e => {
       e.preventDefault();
-      const review = { ...movie, review: [{ ...reviewDetails }] };
+      const review = { ...movie, reviews: [...movie?.reviews, { ...reviewDetails }] };
       await updateMovie({ id, movie: review });
-      setFields({ title: '', description: '' });
+      setFields(getDefaultState());
       setRating(0);
-      window?.location?.reload();
     },
     [id, movie, reviewDetails, updateMovie]
   );

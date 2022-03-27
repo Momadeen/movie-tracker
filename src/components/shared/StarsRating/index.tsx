@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import StarIcon from '../icons/StarIcon';
 
 type Props = {
   rating: number;
-  setRating?: any;
+  setRating?: Dispatch<SetStateAction<number>>;
   readyOnly?: boolean;
 };
 
@@ -19,7 +19,7 @@ const StarsRating = ({ setRating, readyOnly, rating }: Props) => {
             type="button"
             key={index}
             className="star-button"
-            onClick={() => setRating(hover)}
+            onClick={() => setRating && setRating(hover)}
             onMouseEnter={() => !readyOnly && setHover(index)}
             onMouseLeave={() => !readyOnly && setHover(rating)}
           >
