@@ -13,12 +13,12 @@ const MovieDetails = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const { getMovieByID: movie } = useMovieList({ id });
-  const { deleteMovieInList } = useLocalStorage();
+  const { deleteMovie } = useLocalStorage();
 
   const onClickDelete = useCallback(() => {
     setLoading(true);
-    deleteMovieInList({ id });
-  }, [deleteMovieInList, id]);
+    deleteMovie({ id });
+  }, [deleteMovie, id]);
   return (
     <div className="flex flex-col gap-8 mt-12 container mx-auto px-4">
       <BackButton href="/" />

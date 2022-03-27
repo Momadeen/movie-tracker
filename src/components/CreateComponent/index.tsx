@@ -1,6 +1,5 @@
 import BackButton from 'components/shared/BackButton';
 import { useCallback, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
 import { FaRandom } from 'react-icons/fa';
@@ -32,8 +31,6 @@ const inputs: IInputArrayTypes = [
 ];
 
 const CreateForm = () => {
-  let navigate = useNavigate();
-
   const { randomData, getRandomData } = useRandomFill();
   const { addMovieToList } = useLocalStorage();
 
@@ -66,12 +63,11 @@ const CreateForm = () => {
   }, []);
 
   const onSubmit = useCallback(
-    async e => {
+    e => {
       e.preventDefault();
-      await addMovieToList(movieDetails);
-      navigate('/');
+      addMovieToList(movieDetails);
     },
-    [addMovieToList, movieDetails, navigate]
+    [addMovieToList, movieDetails]
   );
 
   const isReadyToSubmit = useMemo(() => {
@@ -103,13 +99,13 @@ const CreateForm = () => {
           ))}
 
           <div className="flex gap-4">
-            <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
-              Create
-            </Button>
             <Button onClick={onClickRandomBtn} type="button">
               <p className="flex flex-row gap-2 items-center">
                 Random fill <FaRandom />
               </p>
+            </Button>
+            <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
+              Create
             </Button>
           </div>
         </form>

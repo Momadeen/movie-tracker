@@ -71,7 +71,7 @@ const AddReview = ({ id, movie }: { id?: string; movie: any }) => {
         <StarsRating rating={rating} setRating={setRating} />
         <div>
           <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
-            Create
+            Add Review
           </Button>
         </div>
       </form>
