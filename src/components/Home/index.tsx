@@ -21,7 +21,7 @@ const Home = () => {
     <div className="flex flex-col gap-8 h-full w-full">
       <Hero movie={moviesList[0]} />
 
-      <div className="flex h-full w-full gap-8 flex-wrap container mx-auto">
+      <div className="flex h-full w-full px-4 gap-8 flex-wrap container mx-auto">
         {moviesList?.slice(1)?.map((movie: IMovieList) => (
           <Link to={`/${movie?.id}`}>
             <MovieCard key={movie?.title} movie={movie} />
