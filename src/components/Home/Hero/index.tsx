@@ -2,7 +2,7 @@ import Button from 'components/shared/Button';
 import StarsRating from 'components/shared/StarsRating';
 import { Link } from 'react-router-dom';
 import { BiMoviePlay } from 'react-icons/bi';
-import { IMovieList } from 'types/data';
+import { IMovieList } from 'types/movie';
 
 const Hero = ({ movie }: { movie: IMovieList }) => (
   <Link to={`/${movie?.id}`}>

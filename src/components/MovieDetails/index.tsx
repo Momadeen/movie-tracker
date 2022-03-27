@@ -51,7 +51,7 @@ const MovieDetails = () => {
         </div>
       )}
 
-      {movie?.review?.length && <Reviews reviews={movie?.review} />}
+      {movie?.reviews?.length && <Reviews reviews={movie?.reviews} />}
       <AddReview id={id} movie={movie} />
     </div>
   );

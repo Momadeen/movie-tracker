@@ -15,4 +15,9 @@ export interface IMovieList {
   id?: string;
   releaseYear?: number;
   rating?: number;
+  reviews: {
+    title: string;
+    description?: string;
+    rating: number;
+  }[];
 }

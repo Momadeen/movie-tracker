@@ -1,8 +1,9 @@
-import { HTMLInputTypeAttribute } from "react";
-import { IFormTypes } from "./form";
+import { HTMLInputTypeAttribute } from 'react';
 
 export interface IInputTypes {
-  onChange?: (e: any) => void;
+  onChange?: (
+    e?: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   placeholder?: string;
   inputType?: string;
   type: HTMLInputTypeAttribute;
@@ -10,8 +11,8 @@ export interface IInputTypes {
   value: string | number | any;
 }
 
-export type IInputArrayTypes = {
-  name: keyof IFormTypes;
+export type IInputArrayTypes<T> = {
+  name: keyof T;
   type: string;
   inputType: string;
   placeholder: string;

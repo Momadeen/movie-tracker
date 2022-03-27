@@ -13,7 +13,7 @@ import Button from '../shared/Button';
 import Input from '../shared/Input';
 import MovieCard from 'components/shared/MovieCard';
 
-const inputs: IInputArrayTypes = [
+const inputs: IInputArrayTypes<IFormTypes> = [
   { name: 'imgUrl', type: 'text', inputType: 'text', placeholder: 'Image url' },
   { name: 'title', type: 'text', inputType: 'text', placeholder: 'Title' },
   {
@@ -41,7 +41,8 @@ const CreateForm = () => {
     description: '',
     id: uuid(),
     rating: 0,
-    createdAt: new Date().getTime()
+    createdAt: new Date().getTime(),
+    reviews: []
   });
 
   useEffect(() => getRandomData(), [getRandomData]);

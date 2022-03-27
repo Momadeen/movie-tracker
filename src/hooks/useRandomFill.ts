@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { IRandomData } from '../types/data';
+import { useCallback, useState } from 'react';
+import { IRandomData } from '../types/movie';
 
 const useRandomFill = () => {
   const [randomData, setRandomData] = useState<IRandomData>();
