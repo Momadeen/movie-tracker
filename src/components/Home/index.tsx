@@ -10,8 +10,6 @@ import Hero from './Hero';
 const Home = () => {
   const { moviesList } = useMovieList({});
 
-  // add 3 movies as default if there's no movies
-
   useEffect(() => {
     if (moviesList?.length) return;
     localStorage.setItem('movies', JSON.stringify(movies));

@@ -1,5 +1,5 @@
 import BackButton from 'components/shared/BackButton';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import { FaRandom } from 'react-icons/fa';
@@ -43,6 +43,8 @@ const CreateForm = () => {
     rating: 0,
     createdAt: new Date().getTime()
   });
+
+  useEffect(() => getRandomData(), [getRandomData]);
 
   const onClickRandomBtn = useCallback(async () => {
     await getRandomData();
