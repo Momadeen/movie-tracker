@@ -1,4 +1,4 @@
-import CreateComponent from "../../components/CreateComponent";
+import CreateComponent from '../../components/Create';
 
 const Create = () => <CreateComponent />;
 export default Create;
