@@ -22,8 +22,8 @@ const MovieDetails = () => {
   return (
     <div className="flex flex-col gap-8 mt-12 container mx-auto px-4">
       <BackButton href="/" />
-      <div className="flex flex-row gap-6">
-        <div className="w-1/2 min-w-[300px] h-96">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-1/2 min-w-[100px] md:min-w-[300px] md:h-96">
           <img className="h-full w-full object-cover" src={movie?.imgUrl} alt="movie img" />
         </div>
         <div className="flex flex-col gap-4">
@@ -36,7 +36,7 @@ const MovieDetails = () => {
             <h4 className="font-kanit font-light text-gray-400 text-sm">Release Year:</h4>
             <h4 className="font-kanit font-bold text-white text-sm">{movie?.releaseYear}</h4>
           </div>
-          <p className="w-1/2 text-gray-300">{movie?.description}</p>
+          <p className="md:w-1/2 text-gray-300">{movie?.description}</p>
         </div>
       </div>
       {loading ? (

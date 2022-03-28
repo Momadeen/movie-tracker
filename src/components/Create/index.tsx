@@ -35,7 +35,8 @@ const CreateForm = () => {
   const { addMovieToList } = useLocalStorage();
 
   const [movieDetails, setFields] = useState<IFormTypes>({
-    imgUrl: '',
+    imgUrl:
+      'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png',
     title: '',
     releaseYear: 0,
     description: '',
@@ -53,13 +54,12 @@ const CreateForm = () => {
       ...prev,
       id: randomData?._id || uuid(),
       title: randomData?.name || 'N/A',
-      imgUrl:
-        'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png',
+      imgUrl: movieDetails?.imgUrl,
       releaseYear: randomData?.releaseYear || 2021,
       description: randomData?.overview || 'N/A',
       rating: (randomData?.imdbRating && Math.floor(randomData?.imdbRating / 2)) || 0
     }));
-  }, [getRandomData, randomData]);
+  }, [getRandomData, movieDetails?.imgUrl, randomData]);
 
   const handleChange = useCallback(e => {
     setFields(prev => ({ ...prev, [e?.target?.name]: e?.target?.value }));
@@ -73,15 +73,10 @@ const CreateForm = () => {
     [addMovieToList, movieDetails]
   );
 
-  const isReadyToSubmit = useMemo(() => {
-    if (
-      movieDetails?.title === '' ||
-      movieDetails?.description === '' ||
-      movieDetails?.releaseYear === 0
-    )
-      return true;
-    return false;
-  }, [movieDetails]);
+  const disabled = useMemo(
+    () => !movieDetails?.title || !movieDetails?.description || !movieDetails?.releaseYear,
+    [movieDetails]
+  );
 
   return (
     <div className="flex flex-col gap-8 mt-12 container mx-auto">
@@ -107,7 +102,7 @@ const CreateForm = () => {
                 Random fill <FaRandom />
               </p>
             </Button>
-            <Button disabled={isReadyToSubmit} buttonType="primary" type="submit">
+            <Button disabled={disabled} buttonType="primary" type="submit">
               Create
             </Button>
           </div>
